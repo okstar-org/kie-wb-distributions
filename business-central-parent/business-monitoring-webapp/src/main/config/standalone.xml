@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
 
-<server xmlns="urn:jboss:domain:8.0">
+<server xmlns="urn:jboss:domain:19.0">
     <extensions>
         <extension module="org.jboss.as.clustering.infinispan"/>
         <extension module="org.jboss.as.connector"/>
@@ -136,7 +136,7 @@
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:bean-validation:1.0"/>
         <subsystem xmlns="urn:jboss:domain:core-management:1.0"/>
-        <subsystem xmlns="urn:jboss:domain:datasources:5.0">
+        <subsystem xmlns="urn:jboss:domain:datasources:7.0">
             <datasources>
                 <datasource jndi-name="java:jboss/datasources/ExampleDS" pool-name="ExampleDS" enabled="true" use-java-context="true">
                     <connection-url>jdbc:h2:mem:test;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE</connection-url>
@@ -222,7 +222,7 @@
             <default-missing-method-permissions-deny-access value="true"/>
             <log-system-exceptions value="true"/>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron:4.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
+        <subsystem xmlns="urn:wildfly:elytron:13.0" final-providers="combined-providers" disallowed-providers="OracleUcrypto">
             <providers>
                 <aggregate-providers name="combined-providers">
                     <providers name="elytron"/>
@@ -244,16 +244,6 @@
                     <realm name="local" role-mapper="super-user-mapper"/>
                 </security-domain>
             </security-domains>
-            <security-realms>
-                <identity-realm name="local" identity="$local"/>
-                <properties-realm name="ManagementRealm">
-                    <users-properties path="mgmt-users.properties" relative-to="jboss.server.config.dir" digest-realm-name="ManagementRealm"/>
-                    <groups-properties path="mgmt-groups.properties" relative-to="jboss.server.config.dir"/>
-                </properties-realm>
-                <filesystem-realm name="ApplicationRealm">
-                    <file path="kie-fs-realm-users" relative-to="jboss.server.config.dir"/>
-                </filesystem-realm>
-            </security-realms>
             <mappers>
                 <simple-permission-mapper name="default-permission-mapper" mapping-mode="first">
                     <permission-mapping>

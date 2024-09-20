@@ -15,5 +15,5 @@
 /subsystem=ejb3/service=remote:remove
 /subsystem=ejb3/service=remote:add(connector-ref=http-remoting-connector, thread-pool-name=default)
 
-/core-service=management/security-realm=KieRealm:add()
-/core-service=management/security-realm=KieRealm/server-identity=ssl:add(keystore-relative-to=jboss.server.config.dir, keystore-password=password)
+#/core-service=management/security-realm=KieRealm:add()
+#/core-service=management/security-realm=KieRealm/server-identity=ssl:add(keystore-relative-to=jboss.server.config.dir, keystore-password=password)
