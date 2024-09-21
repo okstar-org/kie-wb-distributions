@@ -58,6 +58,15 @@
         <property name="kie.keystore.key.server.pwd" value="jBPMKeyPassword"/>
         <property name="kie.keystore.key.ctrl.alias" value="jBPMAlias"/>
         <property name="kie.keystore.key.ctrl.pwd" value="jBPMKeyPassword"/>
+
+
+        <property name="org.kie.server.keycloak.client.id" value="ok-stack"/>
+        <property name="org.kie.server.keycloak.client.secret" value="62988f2b-d283-4044-aecc-182baca902bd"/>
+        <property name="org.kie.server.keycloak.realm" value="ok-star"/>
+        <property name="org.kie.server.keycloak.auth-server-url" value="https://kc.okstar.org.cn/"/>
+        <property name="org.kie.server.keycloak.ssl-required" value="external"/>
+        <property name="org.kie.server.keycloak.resource" value="ok-stack"/>
+
     </system-properties>
     <management>
         <audit-log>

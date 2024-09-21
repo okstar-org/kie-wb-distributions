@@ -1780,10 +1780,6 @@
           <artifactId>jackson-core-asl</artifactId>
         </exclusion>
         <exclusion>
-          <groupId>org.jboss.resteasy</groupId>
-          <artifactId>resteasy-jaxrs</artifactId>
-        </exclusion>
-        <exclusion>
           <groupId>org.keycloak</groupId>
           <artifactId>keycloak-common</artifactId>
         </exclusion>
