@@ -255,26 +255,51 @@
     </profile>
 
 
-    <profile>
-      <id>china</id>
-      <activation>
-        <property>
-          <name>china</name>
-        </property>
-      </activation>
-      <repositories>
-        <repository>
-          <id>AliYun Public Repository</id>
-          <url>https://maven.aliyun.com/repository/public/</url>
-          <releases>
-            <enabled>true</enabled>
-          </releases>
-          <snapshots>
-            <enabled>false</enabled>
-          </snapshots>
-        </repository>
-      </repositories>
-    </profile>
+        <profile>
+            <id>china</id>
+            <activation>
+                <property>
+                    <name>china</name>
+                </property>
+            </activation>
+            <repositories>
+                <repository>
+                    <id>AliYun Public Repository</id>
+                    <url>https://maven.aliyun.com/repository/public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
+
+        <profile>
+            <id>local</id>
+            <repositories>
+                <repository>
+                    <id>okstar-nexus-releases</id>
+                    <url>https://nexus.okstar.org.cn/repository/maven-releases/</url>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                </repository>
+                <repository>
+                    <id>okstar-nexus-snapshots</id>
+                    <url>https://nexus.okstar.org.cn/repository/maven-snapshots/</url>
+                    <snapshots>
+                        <enabled>true</enabled>
+                        <updatePolicy>always</updatePolicy>
+                    </snapshots>
+                </repository>
+            </repositories>
+        </profile>
 
 
   </profiles>

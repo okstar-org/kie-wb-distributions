@@ -44,7 +44,9 @@
     </extensions>
     <system-properties>
         <property name="org.kie.server.id" value="sample-server"/>
-        <property name="org.kie.server.controller" value="http://localhost:8080/business-central/rest/controller"/>
+        <property name="org.kie.server.controller" value="http://localhost:8080/business-central/services/rest/controller"/>
+        <property name="org.kie.server.controller.user" value="azpm4siwxbjg"/>
+        <property name="org.kie.server.controller.pwd" value="123456"/>
         <property name="org.kie.server.location" value="http://localhost:8080/kie-server/services/rest/server"/>
         <property name="org.jbpm.casemgmt.showcase.url" value="/jbpm-casemgmt"/>
         <property name="org.jbpm.ht.admin.group" value="process-admin"/>
@@ -59,13 +61,10 @@
         <property name="kie.keystore.key.ctrl.alias" value="jBPMAlias"/>
         <property name="kie.keystore.key.ctrl.pwd" value="jBPMKeyPassword"/>
 
-
-        <property name="org.kie.server.keycloak.client.id" value="ok-stack"/>
-        <property name="org.kie.server.keycloak.client.secret" value="62988f2b-d283-4044-aecc-182baca902bd"/>
-        <property name="org.kie.server.keycloak.realm" value="ok-star"/>
         <property name="org.kie.server.keycloak.auth-server-url" value="https://kc.okstar.org.cn/"/>
-        <property name="org.kie.server.keycloak.ssl-required" value="external"/>
-        <property name="org.kie.server.keycloak.resource" value="ok-stack"/>
+        <property name="org.kie.server.keycloak.realm" value="ok-star"/>
+        <property name="org.kie.server.keycloak.client-id" value="ok-bpm"/>
+        <property name="org.kie.server.keycloak.client-secret" value="KDoG1rPlQiAkVbfiFo1rTSwKAjKYKd9C"/>
 
     </system-properties>
     <management>
@@ -134,10 +133,10 @@
                 </handlers>
             </root-logger>
             <formatter name="PATTERN">
-                <pattern-formatter pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
+                <pattern-formatter pattern="%d{yyyy-MM-dd HH:mm:ss,SSS} %-5p (%t) [%C] %s%e%n"/>
             </formatter>
             <formatter name="COLOR-PATTERN">
-                <pattern-formatter pattern="%K{level}%d{HH:mm:ss,SSS} %-5p [%c] (%t) %s%e%n"/>
+                <pattern-formatter pattern="%K{level}%d{HH:mm:ss,SSS} %-5p (%t) [%C] %s%e%n"/>
             </formatter>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:batch-jberet:3.0">
@@ -387,7 +386,20 @@
                 </server-ssl-contexts>
             </tls>
         </subsystem>
-        <subsystem xmlns="urn:wildfly:elytron-oidc-client:1.0"/>
+        <subsystem xmlns="urn:wildfly:elytron-oidc-client:1.0">
+            <secure-deployment name="business-central.war">
+                <client-id>ok-bpm</client-id>
+                <provider-url>https://kc.okstar.org.cn/realms/ok-star</provider-url>
+                <ssl-required>external</ssl-required>
+                <credential name="secret" secret="KDoG1rPlQiAkVbfiFo1rTSwKAjKYKd9C" />
+            </secure-deployment>
+            <secure-deployment name="kie-server.war">
+                <client-id>ok-bpm</client-id>
+                <provider-url>https://kc.okstar.org.cn/realms/ok-star</provider-url>
+                <ssl-required>external</ssl-required>
+                <credential name="secret" secret="KDoG1rPlQiAkVbfiFo1rTSwKAjKYKd9C" />
+            </secure-deployment>
+        </subsystem>
         <subsystem xmlns="urn:wildfly:health:1.0" security-enabled="false"/>
         <subsystem xmlns="urn:jboss:domain:iiop-openjdk:2.1">
             <orb socket-binding="iiop"/>
