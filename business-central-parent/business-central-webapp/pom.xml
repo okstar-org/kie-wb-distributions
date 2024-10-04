@@ -149,7 +149,6 @@
     <dependency>
       <groupId>org.jboss.resteasy</groupId>
       <artifactId>resteasy-cdi</artifactId>
-      <scope>provided</scope>
       <exclusions>
         <exclusion>
           <groupId>javassist</groupId>
@@ -293,14 +292,19 @@
 
     <dependency>
       <groupId>org.kie.server</groupId>
-      <artifactId>kie-server-controller-websocket</artifactId>
-      <scope>runtime</scope>
+      <artifactId>kie-server-controller-rest</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.kie.server</groupId>
-      <artifactId>kie-server-controller-websocket-common</artifactId>
-      <scope>runtime</scope>
-    </dependency>
+    
+<!--    <dependency>-->
+<!--      <groupId>org.kie.server</groupId>-->
+<!--      <artifactId>kie-server-controller-websocket</artifactId>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.kie.server</groupId>-->
+<!--      <artifactId>kie-server-controller-websocket-common</artifactId>-->
+<!--      <scope>runtime</scope>-->
+<!--    </dependency>-->
 
     <!-- Guvnor REST -->
     <dependency>

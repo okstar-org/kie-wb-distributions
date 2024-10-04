@@ -15,17 +15,13 @@
     </listener>
 
     <servlet>
-        <servlet-name>KieServerApplication</servlet-name>
-        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
-        <init-param>
-            <param-name>javax.ws.rs.Application</param-name>
-            <param-value>org.kie.server.rest.KieServerApplication</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
+        <servlet-name>org.kie.bc.KieServerApplication</servlet-name>
+        <servlet-class>org.kie.bc.KieServerApplication</servlet-class>
+<!--        <load-on-startup>1</load-on-startup>-->
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>KieServerApplication</servlet-name>
+        <servlet-name>org.kie.bc.KieServerApplication</servlet-name>
         <url-pattern>/services/rest/*</url-pattern>
     </servlet-mapping>
 
